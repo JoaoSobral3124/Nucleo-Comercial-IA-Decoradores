@@ -1,7 +1,8 @@
+// proxy.ts
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   let response = NextResponse.next({
     request: {
       headers: request.headers,
@@ -31,21 +32,14 @@ export async function middleware(request: NextRequest) {
     }
   )
 
-  // IMPORTANTE: Isso atualiza a sessão do usuário automaticamente
   await supabase.auth.getUser()
 
   return response
 }
 
+// Mantenha o config para definir em quais rotas o proxy deve atuar
 export const config = {
   matcher: [
-    /*
-     * Corresponde a todas as rotas, exceto as que começam com:
-     * - _next/static (arquivos estáticos)
-     * - _next/image (arquivos de otimização de imagem)
-     * - favicon.ico (arquivo de ícone)
-     * Sinta-se livre para modificar para atender às suas necessidades.
-     */
     '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
   ],
 }
