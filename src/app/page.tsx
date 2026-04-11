@@ -1,6 +1,8 @@
 'use client'
 
+
 import { useState, useEffect } from 'react'
+import { supabase } from './utils/supabase/client'
 
 export default function Home() {
   const [step, setStep] = useState(0)
