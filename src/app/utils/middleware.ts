@@ -12,7 +12,6 @@ export async function middleware(request: NextRequest) {
       headers: request.headers,
 
     },
-
   })
 
 
