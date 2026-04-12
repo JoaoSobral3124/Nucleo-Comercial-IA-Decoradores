@@ -2,7 +2,7 @@
 
 
 import { useState, useEffect } from 'react'
-import { supabase } from './utils/supabase/client'
+
 
 export default function Home() {
   const [step, setStep] = useState(0)
@@ -83,7 +83,7 @@ export default function Home() {
               onClick={() => alert('Redirecionando para o Dashboard...')}
               className="border-2 border-green-500 px-8 py-3 text-green-500 hover:bg-green-500 hover:text-black transition-all duration-300 tracking-widest font-bold uppercase focus:outline-none focus:ring-2 focus:ring-green-400"
             >
-              ACESSAR SISTEMA
+              ENTRAR NO SISTEMA
             </button>
           </div>
         )}
