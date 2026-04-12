@@ -34,7 +34,7 @@ export default function Home() {
           <h1 className="text-xl font-bold tracking-widest animate-pulse">
             NUCLEO_COMERCIAL_IA - DECORADORES
           </h1>
-          <span className="text-xs text-green-700">v1.0.3 // STABLE</span>
+          <span className="text-xs text-green-700">v1.0.3 // BETA</span>
         </div>
 
         {/* Logs do Sistema */}
