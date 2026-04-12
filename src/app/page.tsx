@@ -32,7 +32,7 @@ export default function Home() {
         {/* Cabeçalho do Sistema */}
         <div className="border-b border-green-800 pb-2 mb-4 flex justify-between items-center">
           <h1 className="text-xl font-bold tracking-widest animate-pulse">
-            NUCLEO_COMERCIAL_IA - DECORADORES
+            NUCLEO COMERCIAL IA - DECORADORES
           </h1>
           <span className="text-xs text-green-700">v1.0.3 // BETA</span>
         </div>
