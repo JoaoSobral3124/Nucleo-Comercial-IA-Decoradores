@@ -49,7 +49,7 @@ export default function Home() {
           {step >= 2 && (
             <div className="animate-fade-in">
               <p className="text-white">{'>'}</p>
-              <p className="text-white">{'>'} LOADING SALES_MODULES:</p>
+              <p className="text-white"> LOADING SALES_MODULES:</p>
               <ul className="pl-4 text-green-400">
                 <li> [OK] SCRIPT_GENERATOR</li>
                 <li> [OK] OBJECTION_HANDLER</li>
