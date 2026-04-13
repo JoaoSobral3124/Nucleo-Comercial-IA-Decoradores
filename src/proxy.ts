@@ -1,7 +1,7 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 // NOME OBRIGATÓRIO: A função DEVE se chamar 'middleware'
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
 
   // 1. Prepara a resposta inicial
 
