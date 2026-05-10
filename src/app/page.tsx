@@ -83,7 +83,7 @@ useEffect(() => {
               </svg>
             </div>
             <div>
-              <h2 className="text-sm font-bold tracking-tight text-white uppercase">Núcleo IA</h2>
+              <h2 className="text-sm font-bold tracking-tight text-white uppercase"> Núcleo Comercial IA - Decoradores</h2>
               <p className="text-[10px] text-emerald-400 font-mono leading-none uppercase">Streaming Engine v4.0</p>
             </div>
           </div>
