@@ -79,7 +79,7 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <h3 className="text-xs font-semibold tracking-wider text-neutral-300">Nucleo Comercial IA Decoradores</h3>
+              <h1 className="text-xs font-semibold tracking-wider text-neutral-300">Nucleo Comercial IA Decoradores</h1>
               <p className="text-[10px] text-neutral-500 font-medium tracking-tight">Módulo Decoradores • v4.0</p>
             </div>
           </div>
@@ -132,7 +132,7 @@ export default function Home() {
               </div>
             ) : (
               <button 
-                onClick={() => router.push('/login')}
+                onClick={() => router.push('/Login')}
                 className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-white px-6 py-3.5 text-xs font-semibold tracking-wider text-black transition-all hover:bg-neutral-100 active:scale-[0.99] shadow-lg shadow-black/20"
               >
                 {/* Efeito de Brilho de Borda Estilo Apple */}
