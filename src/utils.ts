@@ -16,9 +16,11 @@ export const getSupabaseAdmin = () => {
   if (typeof window !== 'undefined') {
     throw new Error("O cliente Admin só pode ser executado no lado do Servidor!")
   }
+
   if (!supabaseSecretKey) {
     throw new Error("Chave secreta do Supabase não foi encontrada nas variáveis de ambiente.")
   }
+
   return createClient(supabaseUrl, supabaseSecretKey, {
     auth: {
       persistSession: false,
