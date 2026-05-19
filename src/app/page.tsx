@@ -3,12 +3,10 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
-// Interface de logs
 interface BootLog {
   text: string;
   delay: number;
   type?: 'header' | 'success' | 'info' | 'default';
-  icon?: React.ReactNode;
 }
 
 const bootSequence: BootLog[] = [
@@ -18,7 +16,7 @@ const bootSequence: BootLog[] = [
   { text: '  SYNCHRONIZING DATA STREAMS [99.9%]', delay: 2200, type: 'default' },
   { text: '  OPTIMIZING VIDEO INFERENCE MODELS', delay: 2600, type: 'default' },
   { text: 'CONNECTION ENCRYPTED (AES-256)', delay: 3400, type: 'info' },
-  { text: 'SYSTEM OPERATIONAL.', delay: 4200, type: 'success' },
+  { text: 'SYSTEM READY.', delay: 4200, type: 'success' },
 ]
 
 export default function Home() {
@@ -27,9 +25,7 @@ export default function Home() {
   const [isReady, setIsReady] = useState(false)
   const router = useRouter();
 
-useEffect(() => {
-    // Usamos um requestAnimationFrame ou apenas deixamos o código seguir
-    // para evitar o alerta de "sincronismo" do ESLint
+  useEffect(() => {
     const frame = requestAnimationFrame(() => {
       setMounted(true);
     });
@@ -49,89 +45,104 @@ useEffect(() => {
     };
   }, []);
 
-  // Evita renderização no servidor para prevenir conflitos com extensões de navegador
   if (!mounted) {
-    return <div className="min-h-screen bg-[#020617]" />;
+    return <div className="min-h-screen bg-black" />;
   }
 
   return (
-    <main className="relative flex min-h-screen flex-col items-center justify-center bg-[#020617] p-4 font-sans text-slate-200 overflow-hidden">
+    <main className="relative flex min-h-screen flex-col items-center justify-center bg-black p-6 font-sans text-neutral-200 overflow-hidden antialiased">
       
-      {/* Background decorativo */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-        <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px]" />
+      {/* Luzes de Fundo Estilo Apple Intelligence (Aura Animada) */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[140px] mix-blend-screen animate-pulse duration-[6000ms]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[700px] h-[700px] bg-purple-600/15 rounded-full blur-[160px] mix-blend-screen animate-pulse duration-[8000ms]" />
+        <div className="absolute top-[30%] right-[20%] w-[400px] h-[400px] bg-pink-500/10 rounded-full blur-[130px] mix-blend-screen animate-pulse duration-[7000ms]" />
       </div>
 
-      {/* Grid de fundo com supressão de aviso de hidratação */}
+      {/* Grid de Fundo Ultra-Sutil */}
       <div 
         suppressHydrationWarning 
-        className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-        style={{ backgroundImage: `radial-gradient(#fff 1px, transparent 1px)`, backgroundSize: '40px 40px' }} 
+        className="absolute inset-0 opacity-[0.015] pointer-events-none" 
+        style={{ backgroundImage: `radial-gradient(#fff 1px, transparent 1px)`, backgroundSize: '32px 32px' }} 
       />
 
-      <div className="relative z-10 w-full max-w-2xl overflow-hidden rounded-2xl border border-white/10 bg-[#0f172a]/80 backdrop-blur-2xl shadow-2xl">
+      {/* Container Principal Inspirado no Ecossistema Apple */}
+      <div className="relative z-10 w-full max-w-xl overflow-hidden rounded-3xl border border-white/[0.06] bg-neutral-900/40 backdrop-blur-3xl shadow-[0_24px_60px_-15px_rgba(0,0,0,0.8)] transition-all duration-700">
         
-        {/* Header Dashboard */}
-        <div className="flex items-center justify-between bg-white/5 px-6 py-4 border-b border-white/10">
+        {/* Cabeçalho Minimalista com Cores Dinâmicas */}
+        <div className="flex items-center justify-between bg-white/[0.02] px-6 py-5 border-b border-white/[0.06]">
           <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.4)]">
-              <svg 
-                suppressHydrationWarning
-                width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">
-                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-              </svg>
+            {/* Ícone de IA Abstrato e Elegante */}
+            <div className="flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 p-[1px]">
+              <div className="flex h-full w-full items-center justify-center rounded-full bg-neutral-950">
+                <div className={`h-2 w-2 rounded-full animate-ping opacity-75 transition-colors duration-500 ${isReady ? 'bg-emerald-400' : 'bg-rose-500'}`} />
+              </div>
             </div>
             <div>
-              <h2 className="text-sm font-bold tracking-tight text-white uppercase"> Núcleo Comercial IA - Decoradores</h2>
-              <p className="text-[10px] text-emerald-400 font-mono leading-none uppercase">Streaming Engine v4.0</p>
+              <h3 className="text-xs font-semibold tracking-wider text-neutral-300">Nucleo Comercial IA Decoradores</h3>
+              <p className="text-[10px] text-neutral-500 font-medium tracking-tight">Módulo Decoradores • v4.0</p>
             </div>
           </div>
-          <div className="flex gap-1.5">
-            <div className="h-2 w-2 rounded-full bg-slate-700" />
-            <div className="h-2 w-2 rounded-full bg-slate-700" />
+          
+          {/* Luz de Status Fluida (Vermelha iniciando, Verde pronto) */}
+          <div className="flex items-center gap-2">
+            <span className={`text-[10px] font-mono tracking-widest transition-all duration-500 ${isReady ? 'text-emerald-400' : 'text-rose-500'}`}>
+              {isReady ? 'READY' : 'BOOTING'}
+            </span>
+            <div className={`h-1.5 w-1.5 rounded-full transition-all duration-500 shadow-sm ${
+              isReady 
+                ? 'bg-emerald-400 shadow-emerald-400/50' 
+                : 'bg-rose-500 shadow-rose-500/50 animate-pulse'
+            }`} />
           </div>
         </div>
 
-        {/* Console de Logs */}
-        <div className="p-8 md:p-12 min-h-[400px] flex flex-col">
-          <div className="flex-1 space-y-4 font-mono">
+        {/* Console de Logs com Efeito de Vidro Fosco */}
+        <div className="p-8 min-h-[340px] flex flex-col justify-between">
+          <div className="space-y-3.5 font-mono text-[13px] tracking-tight selection:bg-neutral-800">
             {logs.map((log, index) => (
               <div 
                 key={index} 
-                className={`flex items-center gap-3 text-sm animate-in fade-in slide-in-from-left-4 duration-500 ${
-                  log.type === 'success' ? 'text-emerald-400 font-bold' : 
-                  log.type === 'header' ? 'text-blue-400' : 
-                  log.type === 'info' ? 'text-slate-500' : 'text-slate-300'
+                className={`flex items-start gap-2 transition-all duration-500 transform translate-y-0 animate-in fade-in slide-in-from-bottom-2 ${
+                  log.type === 'success' ? 'text-white font-medium' : 
+                  log.type === 'header' ? 'text-neutral-400' : 
+                  log.type === 'info' ? 'text-neutral-600' : 'text-neutral-500'
                 }`}
               >
-                <span className={log.type === 'success' ? 'text-base' : ''}>{log.text}</span>
+                <span className="text-neutral-700 select-none">›</span>
+                <span>{log.text}</span>
               </div>
             ))}
           </div>
 
-          {/* Área de Ação/Botão */}
-          <div className="mt-10">
+          {/* Área de Ação Premium */}
+          <div className="mt-8 pt-4 border-t border-white/[0.02]">
             {!isReady ? (
-              <div className="flex items-center gap-3 text-slate-500 text-xs font-mono italic">
-                <div className="h-1 w-12 bg-slate-800 overflow-hidden rounded-full">
+              <div className="flex flex-col gap-2">
+                <div className="h-[2px] w-full bg-neutral-800 overflow-hidden rounded-full">
                   <div 
-                    className="h-full bg-emerald-500 transition-all duration-300" 
+                    className="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 transition-all duration-300 ease-out" 
                     style={{ width: `${(logs.length / bootSequence.length) * 100}%` }} 
                   />
                 </div>
-                PROCESSANDO NÚCLEO...
+                <div className="flex justify-between items-center text-[10px] font-mono text-neutral-600 tracking-wider">
+                  <span>LOADING QUANTUM CORE</span>
+                  <span>{Math.round((logs.length / bootSequence.length) * 100)}%</span>
+                </div>
               </div>
             ) : (
               <button 
                 onClick={() => router.push('/login')}
-                className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-emerald-500 px-8 py-4 text-sm font-bold text-slate-950 transition-all hover:bg-emerald-400 hover:shadow-[0_0_30px_rgba(16,185,129,0.4)] active:scale-[0.98]"
+                className="group relative flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-white px-6 py-3.5 text-xs font-semibold tracking-wider text-black transition-all hover:bg-neutral-100 active:scale-[0.99] shadow-lg shadow-black/20"
               >
-                ACESSAR PLATAFORMA
+                {/* Efeito de Brilho de Borda Estilo Apple */}
+                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-shimmer" style={{ animationDuration: '1.5s' }} />
+                
+                ENTRAR NA PLATAFORMA
                 <svg 
                   suppressHydrationWarning
-                  width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform group-hover:translate-x-1">
-                  <path d="m9 18 6-6-6-6"/>
+                  width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-0.5">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
               </button>
             )}
@@ -139,8 +150,9 @@ useEffect(() => {
         </div>
       </div>
 
-      <footer className="mt-8 text-[11px] text-slate-600 tracking-[0.2em] uppercase">
-        Powered by <span className="text-slate-400 font-bold">Nucleo Commercial Technologies</span>
+      {/* Footer Minimalista de Linha Única */}
+      <footer className="mt-12 text-[10px] text-neutral-600 tracking-[0.25em] font-medium uppercase select-none">
+        Nucleo Commercial Technologies
       </footer>
     </main>
   );
