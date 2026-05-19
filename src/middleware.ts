@@ -33,13 +33,28 @@ export async function middleware(request: NextRequest) {
     }
   )
 
-  await supabase.auth.getUser()
+  // Obtém o usuário logado
+  const { data: { user } } = await supabase.auth.getUser()
+
+  // Se o usuário NÃO estiver logado e tentar acessar a raiz (/) ou qualquer página protegida
+  if (!user && !request.nextUrl.pathname.startsWith('/Login')) {
+    return NextResponse.redirect(new URL('/Login', request.url))
+  }
+
+  // Se o usuário JÁ estiver logado e tentar ir para o Login, manda para a Home
+  if (user && request.nextUrl.pathname.startsWith('/Login')) {
+    return NextResponse.redirect(new URL('/', request.url))
+  }
 
   return response
 }
 
 export const config = {
   matcher: [
+    /*
+     * Ignora arquivos estáticos e pastas internas do Next.js.
+     * Só roda o middleware em páginas reais.
+     */
     '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
   ],
 }
